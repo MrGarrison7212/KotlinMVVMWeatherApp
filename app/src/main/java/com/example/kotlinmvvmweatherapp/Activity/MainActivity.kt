@@ -1,7 +1,8 @@
-package com.example.kotlinmvvmweatherapp
+package com.example.kotlinmvvmweatherapp.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.kotlinmvvmweatherapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
