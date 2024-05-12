@@ -24,11 +24,13 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/addCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -39,13 +41,16 @@
         app:srcCompat="@drawable/plus" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/cityTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="-"
         android:textColor="@color/white"
         android:textSize="16sp"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,12 +62,13 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/cityTxt">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3333"
+            android:gravity="bottom"
             android:orientation="vertical">
 
             <ImageView
@@ -77,6 +83,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="3"
                 android:text="-Km"
                 android:textAlignment="center"
                 android:textColor="@color/white"
@@ -87,6 +97,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Wind"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="3"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
@@ -99,16 +112,19 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/statusTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="-"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="3"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/currentTempTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-10dp"
@@ -120,6 +136,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -128,7 +145,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="3"
                     android:src="@tools:sample/avatars"
                     app:srcCompat="@drawable/arrow_up" />
 
@@ -137,8 +156,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:layout_weight="1"
                     android:text="0"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="3"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -146,8 +167,10 @@
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="0"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="3"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -157,7 +180,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
-                    android:layout_weight="1"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="3"
                     android:src="@tools:sample/avatars"
                     app:srcCompat="@drawable/arrow_down" />
             </LinearLayout>
@@ -167,6 +192,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3333"
+            android:gravity="bottom"
             android:orientation="vertical">
 
             <ImageView
@@ -182,6 +208,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="-Km"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="3"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -191,6 +220,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Wind"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="3"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
