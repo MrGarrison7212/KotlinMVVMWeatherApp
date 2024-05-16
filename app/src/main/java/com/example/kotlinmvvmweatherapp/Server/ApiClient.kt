@@ -7,19 +7,22 @@ import java.util.concurrent.TimeUnit
 
 
 class ApiClient {
-    private lateinit var retrofit: Retrofit
-
     private val client = OkHttpClient.Builder()
         .connectTimeout(60, TimeUnit.SECONDS)
         .readTimeout(60, TimeUnit.SECONDS)
         .writeTimeout(60, TimeUnit.SECONDS)
         .build()
 
-    fun getClient(): Retrofit {
-        retrofit = Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org").client(client)
+    // by lazy - retrofit instance is created only once
+    private val retrofit: Retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl("https://api.openweathermap.org")
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    fun getClient(): Retrofit {
         return retrofit
     }
 

@@ -10,6 +10,10 @@ import androidx.lifecycle.ViewModel
 import com.example.kotlinmvvmweatherapp.R
 import com.example.kotlinmvvmweatherapp.ViewModel.WeatherViewModel
 import com.example.kotlinmvvmweatherapp.databinding.ActivityMainBinding
+import com.example.kotlinmvvmweatherapp.model.CurrentResponseApi
+import retrofit2.Call
+import retrofit2.Response
+import javax.security.auth.callback.Callback
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -31,7 +35,19 @@ class MainActivity : AppCompatActivity() {
 
             cityTxt.text = name
             progressBar.visibility = View.VISIBLE
+            weatherViewModel.loadCurrentWeather(lat, lon, unit = "metric").enqueue(object : retrofit2.Callback<CurrentResponseApi> {
+                override fun onResponse(
+                    call: Call<CurrentResponseApi>,
+                    response: Response<CurrentResponseApi>
+                ) {
+                    TODO("Not yet implemented")
+                }
 
+                override fun onFailure(call: Call<CurrentResponseApi>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+            })
         }
 
 
