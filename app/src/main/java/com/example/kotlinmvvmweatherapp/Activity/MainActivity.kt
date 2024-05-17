@@ -12,6 +12,7 @@ import com.example.kotlinmvvmweatherapp.R
 import com.example.kotlinmvvmweatherapp.ViewModel.WeatherViewModel
 import com.example.kotlinmvvmweatherapp.databinding.ActivityMainBinding
 import com.example.kotlinmvvmweatherapp.model.CurrentResponseApi
+import com.github.matteobattilana.weather.PrecipType
 import retrofit2.Call
 import retrofit2.Response
 import java.util.Calendar
@@ -54,7 +55,10 @@ class MainActivity : AppCompatActivity() {
                             maxTempTxt.text = it.main.tempMax.let { Math.round(it).toString() } + "°"
                             minTempTxt.text = it.main.tempMin.let { Math.round(it).toString() } + "°"
 
-
+                            val drawable = if(isNightNow()) R.drawable.night_bg
+                            else {
+                                it.weather?.get(0)?.icon?.let { it1 -> setDynamicallyWallpaper(it1) }
+                            }
                         }
                     }
                 }
@@ -73,4 +77,37 @@ class MainActivity : AppCompatActivity() {
         return calendar.get(Calendar.HOUR_OF_DAY) >= 18
     }
 
+    private fun setDynamicallyWallpaper(icon:String):Int {
+        return when(icon.dropLast(1)) {
+            "01" -> {
+                initWeatherView(PrecipType.CLEAR)
+                R.drawable.snow_bg
+            }
+            "02","03","04" -> {
+                initWeatherView(PrecipType.CLEAR)
+                R.drawable.cloudy_bg
+            }
+            "09","10","11" -> {
+                initWeatherView(PrecipType.RAIN)
+                R.drawable.rainy_bg
+            }
+            "13" -> {
+                initWeatherView(PrecipType.SNOW)
+                R.drawable.snow_bg
+            }
+            "50" -> {
+                initWeatherView(PrecipType.CLEAR)
+                R.drawable.haze_bg
+            }
+            else -> 0
+        }
+    }
+
+    private fun initWeatherView(type: PrecipType){
+        binding.weatherView.apply {
+            setWeatherData(type)
+            angle = 20
+            emissionRate = 100.0f
+        }
+    }
 }
