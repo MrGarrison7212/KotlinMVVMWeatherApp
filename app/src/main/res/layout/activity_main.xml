@@ -7,11 +7,10 @@
     tools:context=".Activity.MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/bgImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        android:src="@tools:sample/avatars"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +34,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:src="@tools:sample/avatars"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/plus" />
@@ -60,7 +58,7 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/bgImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -86,7 +84,6 @@
                 android:id="@+id/imageView61"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@tools:sample/avatars"
                 app:srcCompat="@drawable/wind" />
 
             <TextView
@@ -159,7 +156,6 @@
                     android:shadowDx="1"
                     android:shadowDy="1"
                     android:shadowRadius="3"
-                    android:src="@tools:sample/avatars"
                     app:srcCompat="@drawable/arrow_up" />
 
                 <TextView
@@ -194,7 +190,6 @@
                     android:shadowDx="1"
                     android:shadowDy="1"
                     android:shadowRadius="3"
-                    android:src="@tools:sample/avatars"
                     app:srcCompat="@drawable/arrow_down" />
             </LinearLayout>
         </LinearLayout>
@@ -210,7 +205,6 @@
                 android:id="@+id/imageView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@tools:sample/avatars"
                 app:srcCompat="@drawable/wind"
                 tools:srcCompat="@drawable/humidity" />
 

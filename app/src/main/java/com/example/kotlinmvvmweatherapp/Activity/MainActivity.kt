@@ -50,15 +50,17 @@ class MainActivity : AppCompatActivity() {
                         detailLayout.visibility = View.VISIBLE
                         data?.let {
                             statusTxt.text = it.weather?.get(0)?.main ?:  "-"
-                            windTxt.text = it.wind.speed.let { Math.round(it).toString() } + "Km"
-                            currentTempTxt.text = it.main.temp.let { Math.round(it).toString() } + "°"
-                            maxTempTxt.text = it.main.tempMax.let { Math.round(it).toString() } + "°"
-                            minTempTxt.text = it.main.tempMin.let { Math.round(it).toString() } + "°"
+                            windTxt.text = it.wind?.speed?.let { Math.round(it).toString() } + "Km"
+                            currentTempTxt.text = it.main?.temp?.let { Math.round(it).toString() } + "°"
+                            maxTempTxt.text = it.main?.tempMax?.let { Math.round(it).toString() } + "°"
+                            minTempTxt.text = it.main?.tempMin?.let { Math.round(it).toString() } + "°"
 
                             val drawable = if(isNightNow()) R.drawable.night_bg
                             else {
-                                it.weather?.get(0)?.icon?.let { it1 -> setDynamicallyWallpaper(it1) }
+                                setDynamicallyWallpaper(it.weather?.get(0)?.icon?:"-")
                             }
+                            bgImage.setImageResource(drawable)
+                            setEffectRainSnow(it.weather?.get(0)?.icon?: "-")
                         }
                     }
                 }
@@ -100,6 +102,26 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.haze_bg
             }
             else -> 0
+        }
+    }
+
+    private fun setEffectRainSnow(icon:String){
+         when(icon.dropLast(1)) {
+            "01" -> {
+                initWeatherView(PrecipType.CLEAR)
+            }
+            "02","03","04" -> {
+                initWeatherView(PrecipType.CLEAR)
+            }
+            "09","10","11" -> {
+                initWeatherView(PrecipType.RAIN)
+            }
+            "13" -> {
+                initWeatherView(PrecipType.SNOW)
+            }
+            "50" -> {
+                initWeatherView(PrecipType.CLEAR)
+            }
         }
     }
 
