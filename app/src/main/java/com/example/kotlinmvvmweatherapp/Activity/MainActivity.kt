@@ -14,11 +14,13 @@ import com.example.kotlinmvvmweatherapp.databinding.ActivityMainBinding
 import com.example.kotlinmvvmweatherapp.model.CurrentResponseApi
 import retrofit2.Call
 import retrofit2.Response
+import java.util.Calendar
 import javax.security.auth.callback.Callback
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private val weatherViewModel : WeatherViewModel by viewModels()
+    private val calendar by lazy { Calendar.getInstance() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -52,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                             maxTempTxt.text = it.main.tempMax.let { Math.round(it).toString() } + "°"
                             minTempTxt.text = it.main.tempMin.let { Math.round(it).toString() } + "°"
 
+
                         }
                     }
                 }
@@ -65,4 +68,9 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    private fun isNightNow() : Boolean {
+        return calendar.get(Calendar.HOUR_OF_DAY) >= 18
+    }
+
 }
