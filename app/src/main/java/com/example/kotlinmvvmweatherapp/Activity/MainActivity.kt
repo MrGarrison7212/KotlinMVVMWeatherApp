@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
 import com.example.kotlinmvvmweatherapp.R
@@ -40,11 +41,11 @@ class MainActivity : AppCompatActivity() {
                     call: Call<CurrentResponseApi>,
                     response: Response<CurrentResponseApi>
                 ) {
-                    TODO("Not yet implemented")
+
                 }
 
                 override fun onFailure(call: Call<CurrentResponseApi>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Toast.makeText(this@MainActivity, t.toString(), Toast.LENGTH_SHORT).show()
                 }
 
             })
