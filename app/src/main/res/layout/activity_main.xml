@@ -66,6 +66,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/detailLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -106,10 +107,10 @@
                 android:id="@+id/textView34"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Wind"
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="3"
+                android:text="Wind"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
@@ -125,10 +126,10 @@
                 android:id="@+id/statusTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="-"
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="3"
+                android:text="-"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
@@ -166,10 +167,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:text="0"
                     android:shadowDx="1"
                     android:shadowDy="1"
                     android:shadowRadius="3"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -177,10 +178,10 @@
                     android:id="@+id/minTempTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
                     android:shadowDx="1"
                     android:shadowDy="1"
                     android:shadowRadius="3"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 

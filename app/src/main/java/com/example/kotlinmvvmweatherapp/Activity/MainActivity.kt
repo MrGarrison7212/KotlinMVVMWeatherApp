@@ -41,7 +41,19 @@ class MainActivity : AppCompatActivity() {
                     call: Call<CurrentResponseApi>,
                     response: Response<CurrentResponseApi>
                 ) {
+                    if(response.isSuccessful){
+                        val data = response.body()
+                        progressBar.visibility = View.GONE
+                        detailLayout.visibility = View.VISIBLE
+                        data?.let {
+                            statusTxt.text = it.weather?.get(0)?.main ?:  "-"
+                            windTxt.text = it.wind.speed.let { Math.round(it).toString() } + "Km"
+                            currentTempTxt.text = it.main.temp.let { Math.round(it).toString() } + "°"
+                            maxTempTxt.text = it.main.tempMax.let { Math.round(it).toString() } + "°"
+                            minTempTxt.text = it.main.tempMin.let { Math.round(it).toString() } + "°"
 
+                        }
+                    }
                 }
 
                 override fun onFailure(call: Call<CurrentResponseApi>, t: Throwable) {
