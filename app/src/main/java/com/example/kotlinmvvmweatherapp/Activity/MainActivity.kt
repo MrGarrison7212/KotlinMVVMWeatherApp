@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity() {
                         detailLayout.visibility = View.VISIBLE
                         data?.let {
                             statusTxt.text = it.weather?.get(0)?.main ?:  "-"
-                            windTxt.text = it.wind?.speed?.let { Math.round(it).toString() } + "Km"
+                            windTxt.text = it.wind?.speed?.let { Math.round(it).toString() } + "Km/h"
+                            humidityTxt.text = it.main?.humidity?.toString() + "%"
                             currentTempTxt.text = it.main?.temp?.let { Math.round(it).toString() } + "°"
                             maxTempTxt.text = it.main?.tempMax?.let { Math.round(it).toString() } + "°"
                             minTempTxt.text = it.main?.tempMin?.let { Math.round(it).toString() } + "°"
