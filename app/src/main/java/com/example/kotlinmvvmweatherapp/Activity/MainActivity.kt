@@ -78,7 +78,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isNightNow() : Boolean {
-        return calendar.get(Calendar.HOUR_OF_DAY) >= 18
+        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+        return hour >= 18 || hour < 6
     }
 
     private fun setDynamicallyWallpaper(icon:String):Int {
