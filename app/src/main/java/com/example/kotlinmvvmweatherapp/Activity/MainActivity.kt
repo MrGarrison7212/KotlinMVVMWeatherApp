@@ -1,5 +1,6 @@
 package com.example.kotlinmvvmweatherapp.Activity
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             cityTxt.text = name
             progressBar.visibility = View.VISIBLE
             weatherViewModel.loadCurrentWeather(lat, lon, unit = "metric").enqueue(object : retrofit2.Callback<CurrentResponseApi> {
+                @SuppressLint("SetTextI18n")
                 override fun onResponse(
                     call: Call<CurrentResponseApi>,
                     response: Response<CurrentResponseApi>
