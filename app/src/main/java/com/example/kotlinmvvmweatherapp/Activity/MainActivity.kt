@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -34,10 +35,13 @@ class MainActivity : AppCompatActivity() {
             statusBarColor = Color.TRANSPARENT
         }
 
+
         binding.apply {
             var lat = 51.60
             var lon = 0.12
             var name = "London"
+
+            // current temp
 
             cityTxt.text = name
             progressBar.visibility = View.VISIBLE
@@ -76,6 +80,16 @@ class MainActivity : AppCompatActivity() {
             })
         }
 
+
+        // setting Blue View
+        var radius = 10f
+        val decorView = window.decorView
+        val rootView = (decorView.findViewById(android.R.id.content) as ViewGroup?)
+        val windowBackground = decorView.background
+
+        rootView.let {
+
+        }
 
     }
 
