@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -16,6 +17,7 @@ import com.example.kotlinmvvmweatherapp.ViewModel.WeatherViewModel
 import com.example.kotlinmvvmweatherapp.databinding.ActivityMainBinding
 import com.example.kotlinmvvmweatherapp.model.CurrentResponseApi
 import com.github.matteobattilana.weather.PrecipType
+import eightbitlab.com.blurview.RenderScriptBlur
 import retrofit2.Call
 import retrofit2.Response
 import java.util.Calendar
@@ -88,7 +90,13 @@ class MainActivity : AppCompatActivity() {
         val windowBackground = decorView.background
 
         rootView.let {
-
+            if (it != null) {
+                binding.blueView.setupWith(it, RenderScriptBlur(this@MainActivity))
+                    .setFrameClearDrawable(windowBackground)
+                    .setBlurRadius(radius)
+            }
+            binding.blueView.outlineProvider = ViewOutlineProvider.BACKGROUND
+            binding.blueView.clipToOutline = true
         }
 
     }
