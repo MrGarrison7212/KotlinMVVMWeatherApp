@@ -10,6 +10,10 @@
         android:id="@+id/nameDayTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:shadowColor="@color/black"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="14sp" />
@@ -18,6 +22,10 @@
         android:id="@+id/hourTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:shadowColor="@color/black"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="14sp" />
@@ -34,6 +42,10 @@
         android:id="@+id/tempTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:shadowColor="@color/black"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="14sp" />
