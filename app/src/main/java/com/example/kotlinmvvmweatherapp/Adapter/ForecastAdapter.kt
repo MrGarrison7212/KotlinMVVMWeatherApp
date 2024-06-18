@@ -1,4 +1,26 @@
 package com.example.kotlinmvvmweatherapp.Adapter
 
-class ForecastAdapter {
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlinmvvmweatherapp.databinding.ForecastViewholderBinding
+
+class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
+
+    private lateinit var binding: ForecastViewholderBinding
+
+    class ViewHolder {
+
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastAdapter.ViewHolder {
+        TODO("Not yet implemented")
+    }
+
+    override fun onBindViewHolder(holder: ForecastAdapter.ViewHolder, position: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getItemCount(): Int {
+        TODO("Not yet implemented")
+    }
 }
