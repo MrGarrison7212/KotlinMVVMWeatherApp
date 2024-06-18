@@ -1,5 +1,6 @@
 package com.example.kotlinmvvmweatherapp.Adapter
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinmvvmweatherapp.databinding.ForecastViewholderBinding
@@ -13,7 +14,9 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastAdapter.ViewHolder {
-        TODO("Not yet implemented")
+        val inflater = LayoutInflater.from(parent.context)
+        binging = ForecastViewholderBinding.inflate(inflater, parent, false)
+        return viewHolder()
     }
 
     override fun onBindViewHolder(holder: ForecastAdapter.ViewHolder, position: Int) {
