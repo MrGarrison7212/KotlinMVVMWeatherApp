@@ -2,8 +2,11 @@ package com.example.kotlinmvvmweatherapp.Adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinmvvmweatherapp.databinding.ForecastViewholderBinding
+import com.example.kotlinmvvmweatherapp.model.ForecastResponseApi
 
 class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
 
@@ -26,4 +29,23 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
     override fun getItemCount(): Int {
         TODO("Not yet implemented")
     }
+
+    private val differCallback = object :DiffUtil.ItemCallback<ForecastResponseApi.data>(){
+        override fun areItemsTheSame(
+            oldItem: ForecastResponseApi.data,
+            newItem: ForecastResponseApi.data
+        ): Boolean {
+            TODO("Not yet implemented")
+        }
+
+        override fun areContentsTheSame(
+            oldItem: ForecastResponseApi.data,
+            newItem: ForecastResponseApi.data
+        ): Boolean {
+            TODO("Not yet implemented")
+        }
+
+    }
+    val differ = AsyncListDiffer(this, dif)
+
 }
