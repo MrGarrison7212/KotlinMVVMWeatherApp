@@ -35,17 +35,17 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
             oldItem: ForecastResponseApi.data,
             newItem: ForecastResponseApi.data
         ): Boolean {
-            TODO("Not yet implemented")
+            return oldItem == newItem
         }
 
         override fun areContentsTheSame(
             oldItem: ForecastResponseApi.data,
             newItem: ForecastResponseApi.data
         ): Boolean {
-            TODO("Not yet implemented")
+            return oldItem == newItem
         }
 
     }
-    val differ = AsyncListDiffer(this, dif)
+    val differ = AsyncListDiffer(this, differCallback)
 
 }
