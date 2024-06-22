@@ -26,8 +26,7 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
         TODO("Not yet implemented")
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+    override fun getItemCount() = differ.currentList.size
     }
 
     private val differCallback = object :DiffUtil.ItemCallback<ForecastResponseApi.data>(){
