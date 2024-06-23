@@ -12,15 +12,13 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
 
     private lateinit var binding: ForecastViewholderBinding
 
-    class ViewHolder {
-
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastAdapter.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         binging = ForecastViewholderBinding.inflate(inflater, parent, false)
-        return viewHolder()
+        return ViewHolder()
     }
+
+    inner class ViewHolder : RecyclerView.ViewHolder(binding.root)
 
     override fun onBindViewHolder(holder: ForecastAdapter.ViewHolder, position: Int) {
         TODO("Not yet implemented")
