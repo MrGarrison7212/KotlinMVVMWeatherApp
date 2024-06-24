@@ -14,7 +14,7 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastAdapter.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        binging = ForecastViewholderBinding.inflate(inflater, parent, false)
+        binding = ForecastViewholderBinding.inflate(inflater, parent, false)
         return ViewHolder()
     }
 
@@ -25,7 +25,6 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
     }
 
     override fun getItemCount() = differ.currentList.size
-    }
 
     private val differCallback = object :DiffUtil.ItemCallback<ForecastResponseApi.data>(){
         override fun areItemsTheSame(
