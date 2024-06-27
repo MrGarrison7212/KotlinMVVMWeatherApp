@@ -1,5 +1,7 @@
 package com.example.kotlinmvvmweatherapp.Adapter
 
+import android.icu.text.SimpleDateFormat
+import android.icu.util.Calendar
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -21,7 +23,10 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root)
 
     override fun onBindViewHolder(holder: ForecastAdapter.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val binding = ForecastViewholderBinding.bind(holder.itemView)
+        val data=SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(differ.currentList(position).dtTxt.toString())
+        val calendar=Calendar.getInstance()
+        calendar.time.date
     }
 
     override fun getItemCount() = differ.currentList.size
