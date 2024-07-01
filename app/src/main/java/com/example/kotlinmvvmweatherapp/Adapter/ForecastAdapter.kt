@@ -27,6 +27,17 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
         val data=SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(differ.currentList(position).dtTxt.toString())
         val calendar=Calendar.getInstance()
         calendar.time.date
+
+        val dayOfWeekName = when (calendar.get(Calendar.DAY_OF_WEEK)) {
+            1 -> "Sun"
+            2 -> "Mon"
+            3 -> "Tue"
+            4 -> "Wed"
+            5 -> "Thu"
+            6 -> "Fri"
+            7 -> "Sat"
+            else -> "-"
+        }
     }
 
     override fun getItemCount() = differ.currentList.size
