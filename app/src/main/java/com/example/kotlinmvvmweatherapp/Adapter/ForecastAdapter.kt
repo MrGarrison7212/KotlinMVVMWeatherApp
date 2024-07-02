@@ -24,7 +24,7 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ForecastAdapter.ViewHolder, position: Int) {
         val binding = ForecastViewholderBinding.bind(holder.itemView)
-        val data=SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(differ.currentList(position).dtTxt.toString())
+        val data=SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(differ.currentList[position].dtTxt.toString())
         val calendar=Calendar.getInstance()
         calendar.time.date
 
