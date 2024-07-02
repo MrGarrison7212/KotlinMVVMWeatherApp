@@ -38,6 +38,10 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
             7 -> "Sat"
             else -> "-"
         }
+        binding.nameDayTxt.text = dayOfWeekName
+        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+        val amPM = if(hour < 12) "am" else "pm"
+        val hour12 = calendar.get(Calendar.HOUR)
     }
 
     override fun getItemCount() = differ.currentList.size
