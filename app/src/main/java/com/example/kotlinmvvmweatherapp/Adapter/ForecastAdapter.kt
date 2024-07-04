@@ -42,6 +42,8 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val amPM = if(hour < 12) "am" else "pm"
         val hour12 = calendar.get(Calendar.HOUR)
+        binding.hourTxt.text = hour12.toString() + amPM
+        binding.tempTxt.text = differ.currentList[position].main?.temp?.let { Math.round(it) }.toString() + "°"
     }
 
     override fun getItemCount() = differ.currentList.size
