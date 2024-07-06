@@ -44,6 +44,20 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
         val hour12 = calendar.get(Calendar.HOUR)
         binding.hourTxt.text = hour12.toString() + amPM
         binding.tempTxt.text = differ.currentList[position].main?.temp?.let { Math.round(it) }.toString() + "°"
+
+        val icon = when(differ.currentList[position].weather?.get(0)?.icon.toString()){
+            "0d","0n"->""
+            "0d","0n"->""
+            "0d","0n"->""
+            "0d","0n"->""
+            "0d","0n"->""
+            "0d","0n"->""
+            "0d","0n"->""
+            "0d","0n"->""
+            "0d","0n"->""
+            "0d","0n"->""
+            else -> "sunny"
+        }
     }
 
     override fun getItemCount() = differ.currentList.size
