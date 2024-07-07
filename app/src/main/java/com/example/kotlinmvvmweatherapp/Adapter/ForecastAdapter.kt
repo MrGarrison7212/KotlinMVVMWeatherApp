@@ -46,16 +46,15 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
         binding.tempTxt.text = differ.currentList[position].main?.temp?.let { Math.round(it) }.toString() + "°"
 
         val icon = when(differ.currentList[position].weather?.get(0)?.icon.toString()){
-            "0d","0n"->""
-            "0d","0n"->""
-            "0d","0n"->""
-            "0d","0n"->""
-            "0d","0n"->""
-            "0d","0n"->""
-            "0d","0n"->""
-            "0d","0n"->""
-            "0d","0n"->""
-            "0d","0n"->""
+            "01d","0n"->"sunny"
+            "02d","02n"->"cloudy_sunny"
+            "03d","03n"->"cloudy_sunny"
+            "04d","04n"->"cloudy"
+            "09d","09n"->"rainy"
+            "010d","010n"->"rainy"
+            "011d","011n"->"storm"
+            "013d","013n"->"snowy"
+            "050d","050n"->"windy"
             else -> "sunny"
         }
     }
