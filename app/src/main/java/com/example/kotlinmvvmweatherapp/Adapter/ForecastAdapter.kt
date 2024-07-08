@@ -57,6 +57,11 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
             "050d","050n"->"windy"
             else -> "sunny"
         }
+
+        val drawableResourceId: Int = binding.root.resources.getIdentifier(
+            icon,
+            "drawable", binding.root.context.packageName
+        )
     }
 
     override fun getItemCount() = differ.currentList.size
