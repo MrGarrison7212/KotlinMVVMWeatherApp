@@ -99,6 +99,9 @@ class MainActivity : AppCompatActivity() {
             binding.blueView.clipToOutline = true
         }
 
+        //forecast temp
+        weatherViewModel.loadForecastWeather(lat, lon, "metric")
+
     }
 
     private fun isNightNow() : Boolean {
