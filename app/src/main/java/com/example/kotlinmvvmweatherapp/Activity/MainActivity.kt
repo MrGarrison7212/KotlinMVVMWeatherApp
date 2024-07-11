@@ -47,61 +47,65 @@ class MainActivity : AppCompatActivity() {
 
             cityTxt.text = name
             progressBar.visibility = View.VISIBLE
-            weatherViewModel.loadCurrentWeather(lat, lon, unit = "metric").enqueue(object : retrofit2.Callback<CurrentResponseApi> {
-                @SuppressLint("SetTextI18n")
-                override fun onResponse(
-                    call: Call<CurrentResponseApi>,
-                    response: Response<CurrentResponseApi>
-                ) {
-                    if(response.isSuccessful){
-                        val data = response.body()
-                        progressBar.visibility = View.GONE
-                        detailLayout.visibility = View.VISIBLE
-                        data?.let {
-                            statusTxt.text = it.weather?.get(0)?.main ?:  "-"
-                            windTxt.text = it.wind?.speed?.let { Math.round(it).toString() } + "Km/h"
-                            humidityTxt.text = it.main?.humidity?.toString() + "%"
-                            currentTempTxt.text = it.main?.temp?.let { Math.round(it).toString() } + "°"
-                            maxTempTxt.text = it.main?.tempMax?.let { Math.round(it).toString() } + "°"
-                            minTempTxt.text = it.main?.tempMin?.let { Math.round(it).toString() } + "°"
+            weatherViewModel.loadCurrentWeather(lat, lon, unit = "metric")
+                .enqueue(object : retrofit2.Callback<CurrentResponseApi> {
+                    @SuppressLint("SetTextI18n")
+                    override fun onResponse(
+                        call: Call<CurrentResponseApi>,
+                        response: Response<CurrentResponseApi>
+                    ) {
+                        if (response.isSuccessful) {
+                            val data = response.body()
+                            progressBar.visibility = View.GONE
+                            detailLayout.visibility = View.VISIBLE
+                            data?.let {
+                                statusTxt.text = it.weather?.get(0)?.main ?: "-"
+                                windTxt.text =
+                                    it.wind?.speed?.let { Math.round(it).toString() } + "Km/h"
+                                humidityTxt.text = it.main?.humidity?.toString() + "%"
+                                currentTempTxt.text =
+                                    it.main?.temp?.let { Math.round(it).toString() } + "°"
+                                maxTempTxt.text =
+                                    it.main?.tempMax?.let { Math.round(it).toString() } + "°"
+                                minTempTxt.text =
+                                    it.main?.tempMin?.let { Math.round(it).toString() } + "°"
 
-                            val drawable = if(isNightNow()) R.drawable.night_bg
-                            else {
-                                setDynamicallyWallpaper(it.weather?.get(0)?.icon?:"-")
+                                val drawable = if (isNightNow()) R.drawable.night_bg
+                                else {
+                                    setDynamicallyWallpaper(it.weather?.get(0)?.icon ?: "-")
+                                }
+                                bgImage.setImageResource(drawable)
+                                setEffectRainSnow(it.weather?.get(0)?.icon ?: "-")
                             }
-                            bgImage.setImageResource(drawable)
-                            setEffectRainSnow(it.weather?.get(0)?.icon?: "-")
                         }
                     }
+
+                    override fun onFailure(call: Call<CurrentResponseApi>, t: Throwable) {
+                        Toast.makeText(this@MainActivity, t.toString(), Toast.LENGTH_SHORT).show()
+                    }
+
+                })
+
+
+            // setting Blue View
+            var radius = 10f
+            val decorView = window.decorView
+            val rootView = (decorView.findViewById(android.R.id.content) as ViewGroup?)
+            val windowBackground = decorView.background
+
+            rootView.let {
+                if (it != null) {
+                    binding.blueView.setupWith(it, RenderScriptBlur(this@MainActivity))
+                        .setFrameClearDrawable(windowBackground)
+                        .setBlurRadius(radius)
                 }
-
-                override fun onFailure(call: Call<CurrentResponseApi>, t: Throwable) {
-                    Toast.makeText(this@MainActivity, t.toString(), Toast.LENGTH_SHORT).show()
-                }
-
-            })
-        }
-
-
-        // setting Blue View
-        var radius = 10f
-        val decorView = window.decorView
-        val rootView = (decorView.findViewById(android.R.id.content) as ViewGroup?)
-        val windowBackground = decorView.background
-
-        rootView.let {
-            if (it != null) {
-                binding.blueView.setupWith(it, RenderScriptBlur(this@MainActivity))
-                    .setFrameClearDrawable(windowBackground)
-                    .setBlurRadius(radius)
+                binding.blueView.outlineProvider = ViewOutlineProvider.BACKGROUND
+                binding.blueView.clipToOutline = true
             }
-            binding.blueView.outlineProvider = ViewOutlineProvider.BACKGROUND
-            binding.blueView.clipToOutline = true
+
+            //forecast temp
+            weatherViewModel.loadForecastWeather(lat, lon, "metric")
         }
-
-        //forecast temp
-        weatherViewModel.loadForecastWeather(lat, lon, "metric")
-
     }
 
     private fun isNightNow() : Boolean {
