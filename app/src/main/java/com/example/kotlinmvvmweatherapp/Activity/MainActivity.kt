@@ -16,6 +16,7 @@ import com.example.kotlinmvvmweatherapp.R
 import com.example.kotlinmvvmweatherapp.ViewModel.WeatherViewModel
 import com.example.kotlinmvvmweatherapp.databinding.ActivityMainBinding
 import com.example.kotlinmvvmweatherapp.model.CurrentResponseApi
+import com.example.kotlinmvvmweatherapp.model.ForecastResponseApi
 import com.github.matteobattilana.weather.PrecipType
 import eightbitlab.com.blurview.RenderScriptBlur
 import retrofit2.Call
@@ -104,7 +105,19 @@ class MainActivity : AppCompatActivity() {
             }
 
             //forecast temp
-            weatherViewModel.loadForecastWeather(lat, lon, "metric")
+            weatherViewModel.loadForecastWeather(lat, lon, "metric").enqueue(object : retrofit2.Callback<ForecastResponseApi>{
+                override fun onResponse(
+                    call: Call<ForecastResponseApi>,
+                    response: Response<ForecastResponseApi>
+                ) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onFailure(call: Call<ForecastResponseApi>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+            })
         }
     }
 
