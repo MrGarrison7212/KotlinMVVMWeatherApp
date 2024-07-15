@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
                     call: Call<ForecastResponseApi>,
                     response: Response<ForecastResponseApi>
                 ) {
-                    TODO("Not yet implemented")
+                    val data = response.body()
                 }
 
                 override fun onFailure(call: Call<ForecastResponseApi>, t: Throwable) {
