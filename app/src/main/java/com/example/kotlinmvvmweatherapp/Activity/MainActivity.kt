@@ -12,6 +12,8 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kotlinmvvmweatherapp.Adapter.ForecastAdapter
 import com.example.kotlinmvvmweatherapp.R
 import com.example.kotlinmvvmweatherapp.ViewModel.WeatherViewModel
 import com.example.kotlinmvvmweatherapp.databinding.ActivityMainBinding
@@ -26,8 +28,9 @@ import javax.security.auth.callback.Callback
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    private val weatherViewModel : WeatherViewModel by viewModels()
+    private val weatherViewModel: WeatherViewModel by viewModels()
     private val calendar by lazy { Calendar.getInstance() }
+    private val forecastAdapter by lazy { ForecastAdapter() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -105,75 +108,95 @@ class MainActivity : AppCompatActivity() {
             }
 
             //forecast temp
-            weatherViewModel.loadForecastWeather(lat, lon, "metric").enqueue(object : retrofit2.Callback<ForecastResponseApi>{
-                override fun onResponse(
-                    call: Call<ForecastResponseApi>,
-                    response: Response<ForecastResponseApi>
-                ) {
-                    val data = response.body()
-                    blueView.visibility = View.VISIBLE
-                }
+            weatherViewModel.loadForecastWeather(lat, lon, "metric")
+                .enqueue(object : retrofit2.Callback<ForecastResponseApi> {
+                    override fun onResponse(
+                        call: Call<ForecastResponseApi>,
+                        response: Response<ForecastResponseApi>
+                    ) {
+                        val data = response.body()
+                        blueView.visibility = View.VISIBLE
 
-                override fun onFailure(call: Call<ForecastResponseApi>, t: Throwable) {
-                    TODO("Not yet implemented")
-                }
+                        data?.let {
+                            forecastAdapter.differ.submitList(it.list)
+                            forecastView.apply {
+                                layoutManager = LinearLayoutManager(
+                                    this@MainActivity,
+                                    LinearLayoutManager.HORIZONTAL, false
+                                )
+                            }
+                        }
+                    }
 
-            })
+                    override fun onFailure(call: Call<ForecastResponseApi>, t: Throwable) {
+                        TODO("Not yet implemented")
+                    }
+
+                })
         }
     }
 
-    private fun isNightNow() : Boolean {
+    private fun isNightNow(): Boolean {
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         return hour >= 18 || hour < 6
     }
 
-    private fun setDynamicallyWallpaper(icon:String):Int {
-        return when(icon.dropLast(1)) {
+    private fun setDynamicallyWallpaper(icon: String): Int {
+        return when (icon.dropLast(1)) {
             "01" -> {
                 initWeatherView(PrecipType.CLEAR)
                 R.drawable.snow_bg
             }
-            "02","03","04" -> {
+
+            "02", "03", "04" -> {
                 initWeatherView(PrecipType.CLEAR)
                 R.drawable.cloudy_bg
             }
-            "09","10","11" -> {
+
+            "09", "10", "11" -> {
                 initWeatherView(PrecipType.RAIN)
                 R.drawable.rainy_bg
             }
+
             "13" -> {
                 initWeatherView(PrecipType.SNOW)
                 R.drawable.snow_bg
             }
+
             "50" -> {
                 initWeatherView(PrecipType.CLEAR)
                 R.drawable.haze_bg
             }
+
             else -> 0
         }
     }
 
-    private fun setEffectRainSnow(icon:String){
-         when(icon.dropLast(1)) {
+    private fun setEffectRainSnow(icon: String) {
+        when (icon.dropLast(1)) {
             "01" -> {
                 initWeatherView(PrecipType.CLEAR)
             }
-            "02","03","04" -> {
+
+            "02", "03", "04" -> {
                 initWeatherView(PrecipType.CLEAR)
             }
-            "09","10","11" -> {
+
+            "09", "10", "11" -> {
                 initWeatherView(PrecipType.RAIN)
             }
+
             "13" -> {
                 initWeatherView(PrecipType.SNOW)
             }
+
             "50" -> {
                 initWeatherView(PrecipType.CLEAR)
             }
         }
     }
 
-    private fun initWeatherView(type: PrecipType){
+    private fun initWeatherView(type: PrecipType) {
         binding.weatherView.apply {
             setWeatherData(type)
             angle = 20
