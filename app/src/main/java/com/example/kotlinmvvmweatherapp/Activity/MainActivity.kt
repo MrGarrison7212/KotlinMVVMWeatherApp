@@ -111,6 +111,7 @@ class MainActivity : AppCompatActivity() {
                     response: Response<ForecastResponseApi>
                 ) {
                     val data = response.body()
+                    blueView.visibility = View.VISIBLE
                 }
 
                 override fun onFailure(call: Call<ForecastResponseApi>, t: Throwable) {
