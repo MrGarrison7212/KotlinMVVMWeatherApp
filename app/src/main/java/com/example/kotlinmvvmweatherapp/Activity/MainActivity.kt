@@ -128,9 +128,9 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
 
-                    override fun onFailure(call: Call<ForecastResponseApi>, t: Throwable) {
-                        TODO("Not yet implemented")
-                    }
+//                    override fun onFailure(call: Call<ForecastResponseApi>, t: Throwable) {
+//                        TODO("Not yet implemented")
+//                    }
 
                 })
         }
