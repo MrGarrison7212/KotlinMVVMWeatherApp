@@ -124,12 +124,13 @@ class MainActivity : AppCompatActivity() {
                                     this@MainActivity,
                                     LinearLayoutManager.HORIZONTAL, false
                                 )
+                                adapter = forecastAdapter
                             }
                         }
                     }
 
                     override fun onFailure(call: Call<ForecastResponseApi>, t: Throwable) {
-                        TODO("Not yet implemented")
+
                     }
 
                 })
