@@ -1,5 +1,6 @@
 package com.example.kotlinmvvmweatherapp.Adapter
 
+import android.annotation.SuppressLint
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import android.view.LayoutInflater
@@ -23,6 +24,7 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
 
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root)
 
+    @SuppressLint("SimpleDateFormat", "SetTextI18n", "DiscouragedApi")
     override fun onBindViewHolder(holder: ForecastAdapter.ViewHolder, position: Int) {
         val binding = ForecastViewholderBinding.bind(holder.itemView)
         val data=SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(differ.currentList[position].dtTxt.toString())
