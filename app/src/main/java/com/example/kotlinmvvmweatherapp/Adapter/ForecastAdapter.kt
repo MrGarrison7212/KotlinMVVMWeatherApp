@@ -29,7 +29,7 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
         val binding = ForecastViewholderBinding.bind(holder.itemView)
         val data=SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(differ.currentList[position].dtTxt.toString())
         val calendar=Calendar.getInstance()
-        calendar.time.date
+        calendar.time = data
 
         val dayOfWeekName = when (calendar.get(Calendar.DAY_OF_WEEK)) {
             1 -> "Sun"
