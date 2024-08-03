@@ -43,9 +43,9 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.apply {
-            var lat = 51.60
-            var lon = 0.12
-            var name = "London"
+            val lat = 51.60
+            val lon = 0.12
+            val name = "London"
 
             // current temp
 
