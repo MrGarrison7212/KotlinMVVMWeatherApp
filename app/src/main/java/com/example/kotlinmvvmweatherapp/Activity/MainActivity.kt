@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
 
 
             // setting Blue View
-            var radius = 10f
+            val radius = 10f
             val decorView = window.decorView
             val rootView = (decorView.findViewById(android.R.id.content) as ViewGroup?)
             val windowBackground = decorView.background
