@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kotlinmvvmweatherapp.databinding.ForecastViewholderBinding
 import com.example.kotlinmvvmweatherapp.model.ForecastResponseApi
+import kotlin.math.roundToInt
 
 class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
 
@@ -46,7 +47,7 @@ class ForecastAdapter:RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
         val amPM = if(hour < 12) "am" else "pm"
         val hour12 = calendar.get(Calendar.HOUR)
         binding.hourTxt.text = hour12.toString() + amPM
-        binding.tempTxt.text = differ.currentList[position].main?.temp?.let { Math.round(it) }.toString() + "°"
+        binding.tempTxt.text = differ.currentList[position].main?.temp?.roundToInt().toString() + "°"
 
         val icon = when(differ.currentList[position].weather?.get(0)?.icon.toString()){
             "01d","0n"->"sunny"
