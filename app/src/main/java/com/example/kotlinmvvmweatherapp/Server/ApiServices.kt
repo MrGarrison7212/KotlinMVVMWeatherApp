@@ -1,5 +1,6 @@
 package com.example.kotlinmvvmweatherapp.Server
 
+import com.example.kotlinmvvmweatherapp.model.CityResponseApi
 import com.example.kotlinmvvmweatherapp.model.CurrentResponseApi
 import com.example.kotlinmvvmweatherapp.model.ForecastResponseApi
 import retrofit2.Call
@@ -23,4 +24,11 @@ interface ApiServices {
         @Query("units") units:String,
         @Query("appid") ApiKey:String,
     ) : Call<ForecastResponseApi>
+
+    @GET("geo/1.0/direct")
+    fun getCitiesList(
+        @Query("q") q:Double,
+        @Query("limit") limit:Double,
+        @Query("appid") ApiKey:String,
+    ) : Call<CityResponseApi>
 }
