@@ -27,8 +27,8 @@ interface ApiServices {
 
     @GET("geo/1.0/direct")
     fun getCitiesList(
-        @Query("q") q:Double,
-        @Query("limit") limit:Double,
+        @Query("q") q:String,
+        @Query("limit") limit:Int,
         @Query("appid") ApiKey:String,
     ) : Call<CityResponseApi>
 }
