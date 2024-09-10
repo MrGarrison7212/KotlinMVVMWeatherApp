@@ -20,4 +20,8 @@
         android:ems="10"
         android:inputType="text"
         android:text="Name" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
