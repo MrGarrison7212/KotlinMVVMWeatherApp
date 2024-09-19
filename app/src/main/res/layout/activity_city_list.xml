@@ -17,10 +17,15 @@
     <EditText
         android:id="@+id/editTextText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:ems="10"
+        android:background="@drawable/edittext_bg"
+        android:textSize="12sp"
+        android:padding="8dp"
+        android:hint="type your city"
+        android:textColorHint="@color/black"
         android:inputType="text"
-        android:text="Name" />
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
