@@ -8,6 +8,7 @@ import com.example.kotlinmvvmweatherapp.databinding.CityViewholderBinding
 
 class CityListActivity : AppCompatActivity() {
     lateinit var binding : ActivityCityListBinding
+    private val cityAdapter by lazy { City }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCityListBinding.inflate(layoutInflater)
