@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kotlinmvvmweatherapp.databinding.CityViewholderBinding
 import com.example.kotlinmvvmweatherapp.databinding.ForecastViewholderBinding
+import com.example.kotlinmvvmweatherapp.model.CityResponseApi
 import com.example.kotlinmvvmweatherapp.model.ForecastResponseApi
 import kotlin.math.roundToInt
 
@@ -33,17 +34,17 @@ class CityAdapter:RecyclerView.Adapter<CityAdapter.ViewHolder>() {
 
     override fun getItemCount() = differ.currentList.size
 
-    private val differCallback = object :DiffUtil.ItemCallback<ForecastResponseApi.data>(){
+    private val differCallback = object :DiffUtil.ItemCallback<CityResponseApi.CityResponseApiItem>(){
         override fun areItemsTheSame(
-            oldItem: ForecastResponseApi.data,
-            newItem: ForecastResponseApi.data
+            oldItem: CityResponseApi.CityResponseApiItem,
+            newItem: CityResponseApi.CityResponseApiItem
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: ForecastResponseApi.data,
-            newItem: ForecastResponseApi.data
+            oldItem: CityResponseApi.CityResponseApiItem,
+            newItem: CityResponseApi.CityResponseApiItem
         ): Boolean {
             return oldItem == newItem
         }
