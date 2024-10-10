@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".Activity.CityListActivity">
+    android:visibility="gone"
+    tools:context=".Activity.CityListActivity"
+    tools:visibility="visible">
 
     <TextView
         android:id="@+id/textView"
