@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.widget.addTextChangedListener
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinmvvmweatherapp.Adapter.CityAdapter
 import com.example.kotlinmvvmweatherapp.R
 import com.example.kotlinmvvmweatherapp.ViewModel.CityViewModel
@@ -47,7 +48,17 @@ class CityListActivity : AppCompatActivity() {
                             call: Call<CityResponseApi>,
                             response: Response<CityResponseApi>
                         ) {
-                            TODO("Not yet implemented")
+                            if(response.isSuccessful){
+                                val data = response.body()
+                                data?.let {
+                                    progressBar3.visibility=View.GONE
+                                    cityAdapter.differ.submitList(it)
+                                    cityView.apply {
+                                        layoutManager=LinearLayoutManager(this@CityListActivity, LinearLayoutManager.HORIZONTAL, false)
+                                        adapter = cityAdapter
+                                    }
+                                }
+                            }
                         }
 
                         override fun onFailure(call: Call<CityResponseApi>, t: Throwable) {
