@@ -43,10 +43,16 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.apply {
-            val lat = 51.60
-            val lon = 0.12
-            val name = "London"
 
+            var lat = intent.getDoubleExtra("lat", 0.0)
+            var lon = intent.getDoubleExtra("lon", 0.0)
+            var name = intent.getStringExtra("name")
+
+            if(lat == 0.0) {
+                lat = 51.60
+                lon = 0.12
+                name = "London"
+            }
             // current temp
 
             cityTxt.text = name
