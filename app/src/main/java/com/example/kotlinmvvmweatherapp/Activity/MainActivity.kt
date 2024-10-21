@@ -1,6 +1,7 @@
 package com.example.kotlinmvvmweatherapp.Activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -53,6 +54,12 @@ class MainActivity : AppCompatActivity() {
                 lon = 0.12
                 name = "London"
             }
+
+            addCity.setOnClickListener{
+                startActivity(Intent(this@MainActivity, CityListActivity::class.java))
+            }
+
+
             // current temp
 
             cityTxt.text = name
