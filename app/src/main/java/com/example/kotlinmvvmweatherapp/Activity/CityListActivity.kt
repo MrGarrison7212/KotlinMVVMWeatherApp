@@ -1,10 +1,12 @@
 package com.example.kotlinmvvmweatherapp.Activity
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +28,11 @@ class CityListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        window.apply {
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            statusBarColor = Color.TRANSPARENT
+        }
 
         binding.apply {
             cityEdt.addTextChangedListener(object : TextWatcher {
